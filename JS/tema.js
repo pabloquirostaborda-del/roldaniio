@@ -1,0 +1,1 @@
+/* Reservado para futuras variantes visuales. No es necesario cargarlo todavía. */

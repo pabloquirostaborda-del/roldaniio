@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#113B28">
+
+    <link rel="icon" href="assets/iconos/FAVICON.png" type="image/png">
+
+    <title>Quirón — Mártires del saber</title>
+
+    <link rel="stylesheet" href="CSS/variables.css">
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/componentes.css">
+    <link rel="stylesheet" href="CSS/portada.css">
+    <link rel="stylesheet" href="CSS/secciones.css">
+
+    <script src="JS/navegacion.js" defer></script>
+    <script src="JS/principal.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Accesibilidad: saltar directamente al contenido -->
+    <a class="skip-link" href="#contenido">
+        Saltar al contenido
+    </a>
+
+
+    <!-- ========================================
+         HEADER / NAVEGACIÓN
+    ========================================= -->
+
+    <header class="site-header" id="site-header">
+
+        <div class="header-inner">
+
+            <!-- Menú hamburguesa -->
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="main-navigation"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <!-- Logo de Quirón -->
+            <a
+                class="brand"
+                href="index.html"
+                aria-label="Quirón, inicio"
+            >
+                <!-- Sustituye por el nombre real de tu PNG -->
+                <img
+                    src="assets/logos/QUIRON VERDE transp.png"
+                    alt="Quirón"
+                >
+
+                <span class="brand-fallback" hidden>
+                    Quirón
+                </span>
+            </a>
+
+
+            <!-- Navegación principal -->
+            <nav
+                class="main-navigation"
+                id="main-navigation"
+                aria-label="Navegación principal"
+            >
+                <a class="nav-link is-current" href="#inicio">
+                    Inicio
+                </a>
+
+                <a class="nav-link" href="#secciones">
+                    Secciones
+                </a>
+
+                 <a class="nav-link" href="#manifiesto">
+                    Manifiesto
+                </a>
+
+                <a class="nav-link" href="#sobre-quiron">
+                    Sobre mí
+                </a>
+
+                <a class="nav-link" href="Paginas/blog.html">
+                    Blog
+                </a>
+            </nav>
+
+
+            <!-- Botón de búsqueda -->
+            <button
+                class="search-toggle"
+                id="search-toggle"
+                type="button"
+                aria-label="Mostrar buscador"
+                aria-expanded="false"
+                aria-controls="search-panel"
+            >
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <circle
+                        cx="10.8"
+                        cy="10.8"
+                        r="6.8"
+                    ></circle>
+
+                    <path d="m16 16 5 5"></path>
+                </svg>
+            </button>
+
+        </div>
+
+
+        <!-- Panel de búsqueda -->
+        <form
+            class="search-panel"
+            id="search-panel"
+            role="search"
+            hidden
+        >
+            <label
+                class="visually-hidden"
+                for="site-search"
+            >
+                Buscar en Quirón
+            </label>
+
+            <input
+                id="site-search"
+                type="search"
+                placeholder="Buscar artículos..."
+            >
+
+            <button type="submit">
+                Buscar
+            </button>
+
+            <p class="search-note">
+                El buscador se conectará cuando organicemos
+                el archivo de artículos.
+            </p>
+        </form>
+
+    </header>
+
+
+
+    <!-- ========================================
+         CONTENIDO PRINCIPAL
+    ========================================= -->
+
+    <main id="contenido">
+
+
+        <!-- ====================================
+             HERO / PORTADA PRINCIPAL
+        ===================================== -->
+
+        <section
+            class="hero"
+            id="inicio"
+            aria-labelledby="hero-title"
+            >
+
+            <!-- Imagen hero: se configurará desde CSS -->
+            <div
+                class="hero-art"
+                role="img"
+                aria-label="Composición editorial con un centauro,
+                una serpiente y una manzana"
+            ></div>
+
+            <div class="hero-shade"></div>
+
+
+            <!-- Texto principal -->
+            <div class="hero-content page-shell">
+
+                <!-- COLUMNA IZQUIERDA: MANIFIESTO -->
+                <div class="hero-left">
+                    <p class="eyebrow reveal">
+                        <bold>Un refugio de periodismo con espíritu</bold>
+                    </p>
+
+                    <p class="hero-manifesto reveal">
+                        Mártires del saber.<br>
+                        Mártires del conocer.<br>
+                        Mártires de la razón.<br>
+                        Mártires de la curiosidad.
+                    </p>
+                </div>
+
+                <!-- COLUMNA DERECHA: LOGO Y DECLARACIÓN -->
+                <div class="hero-right reveal">
+
+                    <img
+                        class="hero-logo"
+                        src="assets/logos/QUIRON VERDE transp.png"
+                        alt="Quirón"
+                    >
+
+                    <p class="hero-copy">
+                        Abraza la serpiente como si el saber fuera pecado.
+                    
+                    </p>
+
+                    <p class="hero-copy">
+                    
+                        Si la razón es pecado, somos mártires gustosos.
+                    </p>
+
+                    <a class="text-link hero-link" href="#seleccion">
+                        Explora <span>↘</span>
+                    </a>
+
+                </div>
+            </div>
+    
+
+
+            <!-- Indicador de desplazamiento -->
+            <a
+                class="scroll-cue"
+                href="#seleccion"
+                aria-label="Desplazarse a los contenidos"
+            >
+                <span></span>
+            </a>
+
+            <span class="hero-index" aria-hidden="true">
+                01 / 04
+            </span>
+
+        </section>
+
+
+
+        <!-- ====================================
+             SELECCIÓN EDITORIAL
+        ===================================== -->
+
+        <section
+            class="editorial-selection section-pad"
+            id="seleccion"
+             >
+
+            <div class="section-heading page-shell reveal">
+
+                <div>
+                    <p class="eyebrow eyebrow-dark">
+                        Lecturas para inquietar la razón
+                    </p>
+
+                    <h2>Selección editorial</h2>
+                </div>
+
+                <a
+                    class="text-link text-link-dark"
+                    href="Paginas/blog.html"
+                >
+                    Ver el archivo
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+
+            <div class="story-grid page-shell">
+
+
+                <!-- Historia 1 -->
+                <article class="story-card story-card--large reveal">
+
+                    <a
+                        class="story-image story-image--one"
+                        href="Secciones/Centauro/index.html"
+                        aria-label="Explorar Centauro"
+                    >
+                        <span class="story-number">01</span>
+                        <span class="story-open" aria-hidden="true">↗</span>
+                    </a>
+
+                    <div class="story-meta">
+                        <span>Actualidad · Análisis</span>
+                        <span>Centauro</span>
+                    </div>
+
+                    <h3>
+                        <a href="Secciones/Centauro/index.html">
+                            Mirar de frente el presente
+                        </a>
+                    </h3>
+
+                    <p>
+                        Periodismo para entender el poder,
+                        sus consecuencias y las historias
+                        que explican nuestro tiempo.
+                    </p>
+
+                </article>
+
+
+                <!-- Historia 2 -->
+                <article class="story-card reveal">
+
+                    <a
+                        class="story-image story-image--two"
+                        href="Secciones/Bestia/index.html"
+                        aria-label="Explorar Bestia"
+                    >
+                        <span class="story-number">02</span>
+                        <span class="story-open" aria-hidden="true">↗</span>
+                    </a>
+
+                    <div class="story-meta">
+                        <span>Crónica · Perfil</span>
+                        <span>Bestia</span>
+                    </div>
+
+                    <h3>
+                        <a href="Secciones/Bestia/index.html">
+                            La realidad también tiene garras
+                        </a>
+                    </h3>
+
+                    <p>
+                        Historias narradas desde sus detalles,
+                        contradicciones y personajes.
+                    </p>
+
+                </article>
+
+
+                <!-- Historia 3 -->
+                <article class="story-card reveal">
+
+                    <a
+                        class="story-image story-image--three"
+                        href="Secciones/Conversacion/index.html"
+                        aria-label="Explorar Convers-ac-ión"
+                    >
+                        <span class="story-number">03</span>
+                        <span class="story-open" aria-hidden="true">↗</span>
+                    </a>
+
+                    <div class="story-meta">
+                        <span>Opinión · Pensamiento</span>
+                        <span>Convers-ac-ión</span>
+                    </div>
+
+                    <h3>
+                        <a href="Secciones/Conversacion/index.html">
+                            Pensar también es tomar posición
+                        </a>
+                    </h3>
+
+                    <p>
+                        Ideas, argumentos y preguntas que
+                        se niegan a quedarse en la superficie.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+                <!-- ====================================
+                    SECCIONES EDITORIALES
+                ===================================== -->
+
+            <section
+                            class="sections-section section-pad"
+                            id="secciones"
+                         >
+
+                            <div class="section-heading page-shell reveal">
+
+                                <div>
+                                    <p class="eyebrow">
+                                        Cuatro maneras de mirar
+                                    </p>
+
+                                    <h2>Secciones editoriales</h2>
+                                </div>
+
+                                <p class="section-intro">
+                                    Un mismo impulso: preguntar.
+                                    Cuatro formas de seguir la pista.
+                                </p>
+
+                            </div>
+
+
+                    <div class="section-cards page-shell">
+
+                        <!-- Centauro -->
+                        <a
+                            class="section-card section-card--centauro reveal"
+                            href="Secciones/Centauro/index.html"
+                            aria-label="Entrar a Centauro: periodismo y actualidad"
+                        >
+                            <span class="section-card-top">
+                                Periodismo <span aria-hidden="true">·</span> Actualidad
+                            </span>
+
+                            <span class="section-card-visual">
+                                <img
+                                    class="section-card-logo section-card-logo--centauro"
+                                    src="assets/logos/CENTAURO VERDE transp.png"
+                                    alt="Centauro"
+                                >
+                            </span>
+
+                            <span class="section-card-bottom">
+                                <span>Investigar el presente</span>
+                                <span class="section-card-arrow" aria-hidden="true">↗</span>
+                            </span>
+                        </a>
+
+                        <!-- Bestia -->
+                        <a
+                            class="section-card section-card--bestia reveal"
+                            href="Secciones/Bestia/index.html"
+                            aria-label="Entrar a Bestia: narrativa y crónica"
+                        >
+                            <span class="section-card-top">
+                                Narrativa <span aria-hidden="true">·</span> Crónica
+                            </span>
+
+                            <span class="section-card-visual">
+                                <img
+                                    class="section-card-logo section-card-logo--bestia"
+                                    src="assets/logos/BESTIA VERDE 1 transp.png"
+                                    alt="Bestia"
+                                >
+                            </span>
+
+                            <span class="section-card-bottom">
+                                <span>Seguir las historias</span>
+                                <span class="section-card-arrow" aria-hidden="true">↗</span>
+                            </span>
+                        </a>
+
+                        <!-- Convers-ac-ión -->
+                        <a
+                            class="section-card section-card--conversacion reveal"
+                            href="Secciones/Conversacion/index.html"
+                            aria-label="Entrar a Convers-ac-ión: opinión y debate"
+                        >
+                            <span class="section-card-top">
+                                Opinión <span aria-hidden="true">·</span> Debate
+                            </span>
+
+                            <span class="section-card-visual">
+                                <img
+                                    class="section-card-logo section-card-logo--conversacion"
+                                    src="assets/logos/CONVERSACION CARBON transp.png"
+                                    alt="Convers-ac-ión"
+                                >
+                            </span>
+
+                            <span class="section-card-bottom">
+                                <span>Poner las ideas en juego</span>
+                                <span class="section-card-arrow" aria-hidden="true">↗</span>
+                            </span>
+                        </a>
+
+                        <!-- Speciales -->
+                        <a
+                            class="section-card section-card--speciales reveal"
+                            href="Secciones/Speciales/index.html"
+                            aria-label="Entrar a Speciales: investigación y largo aliento"
+                        >
+                            <span class="section-card-top">
+                                Investigación <span aria-hidden="true">·</span> Largo aliento
+                            </span>
+
+                            <span class="section-card-visual">
+                                <img
+                                    class="section-card-logo section-card-logo--speciales"
+                                    src="assets/logos/SPECIALES CARBON transp.png"
+                                    alt="Speciales"
+                                >
+                            </span>
+
+                            <span class="section-card-bottom">
+                                <span>Entrar en profundidad</span>
+                                <span class="section-card-arrow" aria-hidden="true">↗</span>
+                            </span>
+                        </a>
+
+                    </div>
+            </section>       
+
+
+        <!-- ====================================
+             MANIFIESTO
+        ===================================== -->
+
+            <!-- MANIFIESTO DE QUIRÓN -->
+        <section class="manifesto-section" id="manifiesto" aria-labelledby="manifesto-title">
+
+        <div class="manifesto-inner">
+
+            <!-- Encabezado editorial -->
+            <header class="manifesto-header reveal">
+            <span class="manifesto-kicker">QUIRÓN · DECLARACIÓN DE PRINCIPIOS</span>
+
+            <h2 id="manifesto-title">
+                Manifiesto de los
+                <em>mártires del saber</em>
+            </h2>
+
+            <div class="manifesto-divider" aria-hidden="true">
+                <span></span>
+                <span class="manifesto-divider-symbol">✳</span>
+                <span></span>
+            </div>
+
+            <div class="manifesto-verses">
+                <p>Mártires del saber.</p>
+                <p>Mártires del conocer.</p>
+                <p>Mártires de la curiosidad.</p>
+                <p>Mártires de la razón.</p>
+            </div>
+            </header>
+
+            <!-- Cuerpo del manifiesto -->
+            <div class="manifesto-body">
+
+            <p class="manifesto-lead reveal">
+                Quirón nace de una inquietud: la necesidad de contar lo que importa,
+                de hacer preguntas que incomoden y de abrir conversaciones que nos
+                acerquen a una comprensión más honesta de la realidad.
+            </p>
+
+            <div class="manifesto-columns reveal">
+
+                <div class="manifesto-column">
+                <p>
+                    Creemos en el conocimiento como búsqueda, en la curiosidad como
+                    impulso y en la razón como ejercicio de libertad. Creemos también
+                    en el periodismo como una forma de aproximarse al mundo: observarlo,
+                    interrogarlo, narrarlo y cuestionarlo sin renunciar a su complejidad.
+                </p>
+
+                <p>
+                    No nos conformamos con la superficie de los acontecimientos.
+                    Nos interesan las historias que merecen ser contadas, las voces
+                    que necesitan ser escuchadas, las ideas que exigen discusión y
+                    los fenómenos que reclaman una mirada crítica. Buscamos comprender
+                    antes que simplificar, preguntar antes que dar por sentado y
+                    narrar sin olvidar que detrás de cada hecho existen personas,
+                    contextos y contradicciones.
+                </p>
+                </div>
+
+                <div class="manifesto-column">
+                <p>
+                    Quirón es un espacio para la actualidad, la narrativa, la opinión
+                    y la investigación. Cuatro universos que comparten una misma
+                    inquietud: acercarse a la realidad desde distintas formas de mirar,
+                    pensar y contar.
+                </p>
+
+                <p>
+                    Porque conocer también supone equivocarse, revisar las propias
+                    convicciones y reconocer aquello que todavía ignoramos. La razón
+                    no nos vuelve infalibles; nos compromete a pensar con rigor,
+                    a escuchar y a someter nuestras ideas a discusión.
+                </p>
+                </div>
+
+            </div>
+
+            <!-- La serpiente y la manzana -->
+            <aside class="manifesto-symbolism reveal">
+                <span class="manifesto-symbolism-label">Nuestra tentación</span>
+
+                <p class="manifesto-symbolism-phrase">
+                Abraza la serpiente como si conocer fuera pecado.
+                </p>
+
+                <p class="manifesto-symbolism-phrase">
+                Abraza la serpiente como si el saber fuera pecado.
+                </p>
+
+                <p class="manifesto-symbolism-explanation">
+                La serpiente representa aquí la tentación de preguntar, de acercarse
+                a lo desconocido y de desafiar los límites impuestos al pensamiento.
+                La manzana evoca ese deseo de conocer que, aun cuando implique riesgo,
+                no deja de atraernos. No abrazamos la ignorancia por comodidad ni
+                la certeza por costumbre: preferimos la inquietud de una pregunta
+                abierta a la tranquilidad de una respuesta fácil.
+                </p>
+            </aside>
+
+            <!-- Declaración final -->
+            <div class="manifesto-ending reveal">
+
+                <p class="manifesto-ending-line">
+                Si la razón es pecado, somos mártires hambrientos.
+                </p>
+
+                <p class="manifesto-ending-line">
+                Si la razón es pecado, somos mártires gustosos.
+                </p>
+
+                <p class="manifesto-ending-explanation">
+                No porque busquemos el sufrimiento, sino porque aceptamos el costo
+                de la curiosidad: la duda, la incomodidad y la posibilidad de descubrir
+                que el mundo —y nosotros mismos— somos más complejos de lo que creíamos.
+                </p>
+
+            </div>
+
+            </div>
+
+            <!-- Cierre -->
+            <footer class="manifesto-footer reveal">
+            <p class="manifesto-final-statement">
+                Quirón es una invitación a mirar de nuevo, preguntar mejor y contar
+                aquello que merece ser conocido.
+            </p>
+
+            <p class="manifesto-signature">
+                Una revista personal de periodismo para quienes todavía sienten
+                <em>hambre de saber.</em>
+            </p>
+            </footer>
+
+        </div>
+        </section>
+
+        <!-- ====================================
+             SOBRE EL AUTOR
+        ===================================== -->
+
+        <section
+            class="about-section section-pad"
+            id="sobre-quiron"
+        >
+
+            <div class="about-grid page-shell">
+
+
+                <!-- Imagen del autor -->
+                <div class="about-image reveal">
+                    <span>El oficio de preguntar</span>
+                </div>
+
+                
+
+
+                <!-- Presentación -->
+                <div class="about-copy reveal">
+
+                    <p class="eyebrow eyebrow-dark">
+                        Detrás de Quirón
+                    </p>
+
+                    <h2>Sobre el autor</h2>
+
+                    <p class="about-lead">
+                        Creo en el periodismo como un acto de
+                        resistencia, como una forma de entender
+                        el mundo y de habitarlo con más preguntas
+                        que certezas.
+                    </p>
+
+                    <p>
+                        Quirón nace de esa necesidad: explorar,
+                        cuestionar y contar lo que importa,
+                        aunque incomode. No es solo un proyecto
+                        editorial; es una forma de vida.
+                    </p>
+
+                    <a
+                        class="text-link text-link-dark"
+                        href="Paginas/sobre-mi.html"
+                    >
+                        Conoce más sobre mí
+                        <span aria-hidden="true">↗</span>
+                    </a>
+
+                </div>
+
+
+                <!-- Lema de la marca -->
+                <aside class="about-motto">
+
+                    <div aria-hidden="true">Q</div>
+
+                    <p>
+                        Mártires del saber.<br>
+                        Mártires del conocer.<br>
+                        Mártires de la curiosidad.<br>
+                        Mártires de la razón.
+                    </p>
+
+                    <span aria-hidden="true"></span>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================
+             INVITACIÓN AL BLOG
+        ===================================== -->
+
+        <section class="closing-callout">
+
+            <div class="page-shell closing-inner reveal">
+
+                <p class="eyebrow">
+                    La curiosidad no termina aquí
+                </p>
+
+                <h2>
+                    La conversación<br>
+                    está abierta.
+                </h2>
+
+                <a
+                    class="button button-light"
+                    href="Paginas/blog.html"
+                >
+                    Entrar al blog
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ========================================
+         FOOTER / PIE DE PÁGINA
+    ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="footer-top page-shell">
+
+            <a class="footer-brand" href="index.html">
+                Quirón<span>.</span>
+            </a>
+
+            <p>
+                Mártires del saber.
+                Mártires de la razón.
+            </p>
+
+            <nav aria-label="Navegación del pie de página">
+
+                <a href="#secciones">
+                    Secciones
+                </a>
+
+                <a href="Paginas/sobre-mi.html">
+                    Sobre mí
+                </a>
+
+                <a href="Paginas/blog.html">
+                    Blog
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <div class="footer-bottom page-shell">
+
+            <span>
+                © <span id="current-year"></span> Quirón
+            </span>
+
+            <span>
+                Periodismo, curiosidad y pensamiento crítico.
+            </span>
+
+            <a href="#inicio">
+                Volver arriba ↑
+            </a>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
