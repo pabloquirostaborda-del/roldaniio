@@ -1,0 +1,40 @@
+/* =========================================
+   QUIRÓN — VARIABLES GLOBALES
+   ========================================= */
+
+:root {
+    /* Paleta de marca */
+    --color-cream: #F2EEE4;
+    --color-forest: #113B28;
+    --color-wine: #781A16;
+    --color-charcoal: #171715;
+    --color-sage: #8BAD93;
+    --color-paper: #F0EBDD;
+    --color-ink-soft: #55564E;
+
+    /* Tipografías: los archivos deben declararse con @font-face */
+    --font-editorial: "EB Garamond", Georgia, "Times New Roman", serif;
+    --font-ui: "Typewcond", Arial, sans-serif;
+    --font-display: "KIN", "EB Garamond", serif;
+    --font-condensed: "Bebas Neue", Impact, sans-serif;
+
+    /* Dimensiones generales */
+    --page-gutter: clamp(1.25rem, 4vw, 4rem);
+    --content-max: 1440px;
+
+    /* Header */
+    --header-height: 92px;
+    --header-height-compact: 68px;
+
+    /* Transiciones */
+    --ease-out: cubic-bezier(.22, 1, .36, 1);
+    --transition-fast: 180ms ease;
+    --transition-smooth: 420ms var(--ease-out);
+}
+
+@media (max-width: 760px) {
+    :root {
+        --header-height: 74px;
+        --header-height-compact: 62px;
+    }
+}

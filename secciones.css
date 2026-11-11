@@ -1,0 +1,939 @@
+/* =========================================================
+   QUIRÓN — SECCIONES Y COMPONENTES EDITORIALES
+   Hoja reorganizada: fondos, Bestia, lector y responsive.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. TARJETAS DE ACCESO A LAS SECCIONES
+   --------------------------------------------------------- */
+
+.section-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.section-card::before,
+.section-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.section-card::before {
+    z-index: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 400ms ease;
+}
+
+.section-card--centauro::before {
+    background-image: url("../assets/images/fondo-centauro-boton-2.png");
+}
+
+.section-card--bestia::before {
+    background-image: url("../assets/images/fondo-bestia-boton-5.png");
+}
+
+.section-card--conversacion::before {
+    background-image: url("../assets/images/fondo-conversacion-negro.png");
+}
+
+.section-card--speciales::before {
+    background-image: url("../assets/images/fondo-speciales-boton.png");
+}
+
+.section-card::after {
+    z-index: 1;
+    transition: background-color 350ms ease;
+}
+
+.section-card--centauro::after,
+.section-card--bestia::after {
+    background-color: rgb(17 59 40 / 65%);
+}
+
+.section-card--conversacion::after,
+.section-card--speciales::after {
+    background-color: rgb(23 23 21 / 70%);
+}
+
+.section-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.section-card-visual {
+    background: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .section-card:hover::before {
+        transform: scale(1.04);
+    }
+
+    .section-card--centauro:hover::after,
+    .section-card--bestia:hover::after {
+        background-color: rgb(17 59 40 / 45%);
+    }
+
+    .section-card--conversacion:hover::after,
+    .section-card--speciales:hover::after {
+        background-color: rgb(23 23 21 / 50%);
+    }
+}
+
+/* ---------------------------------------------------------
+   2. BESTIA — BASE Y ARCHIVO RECOMENDADO
+   --------------------------------------------------------- */
+
+.archivo-diario {
+    border-bottom: 1px solid rgb(242 238 228 / 22%);
+}
+
+.archivo-diario__heading {
+    max-width: 760px;
+    margin-bottom: 2rem;
+}
+
+.archivo-diario__contenido {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: center;
+}
+
+.daily-card__image,
+.article-card__image,
+.principal-feature__image {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    background: #1b4633;
+}
+
+/* La caja usa la proporción del artículo; la imagen no se recorta. */
+.daily-card__image {
+    aspect-ratio: var(--article-ratio, 4 / 3);
+}
+
+.daily-card__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 450ms ease;
+}
+
+.daily-card__copy h3 {
+    margin: 0.5rem 0 1rem;
+    font-size: clamp(2rem, 4vw, 3.7rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.daily-card__copy p {
+    color: var(--bestia-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.daily-card__deepening {
+    padding-left: 1rem;
+    border-left: 2px solid var(--bestia-sage);
+}
+
+.daily-card__link,
+.article-card__link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--bestia-sage);
+    text-decoration: none;
+}
+
+.daily-card__link:hover,
+.article-card__link:hover {
+    color: var(--bestia-sage);
+}
+
+.bestia-principal .section-heading h2,
+.bestia-reflejo .section-heading h2,
+.nomadas-section .section-heading h2 {
+    color: #F2EEE4;
+}
+
+/* ---------------------------------------------------------
+   3. PRINCIPAL
+   --------------------------------------------------------- */
+
+.principal-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.8fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: center;
+}
+
+.principal-feature__image {
+    aspect-ratio: 16 / 10;
+}
+
+.principal-feature__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 450ms ease;
+}
+
+.article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    color: var(--bestia-sage);
+    font-size: 0.9rem;
+}
+
+.article-teaser {
+    color: var(--bestia-muted);
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.principal-feature__copy h3 {
+    margin: 0.5rem 0 1rem;
+    font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 0.98;
+}
+
+/* ---------------------------------------------------------
+   4. NÓMADAS — FONDO, ENCABEZADO Y CARRUSEL
+   --------------------------------------------------------- */
+
+.nomadas-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--bestia-wine);
+    color: var(--bestia-cream);
+}
+
+.nomadas-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: url("../assets/images/fondo-nomadas.png") center / cover no-repeat;
+}
+
+.nomadas-section__inner {
+    position: relative;
+    width: min(100% - 3rem, 1280px);
+    margin-inline: auto;
+    padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.section-heading--nomadas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 0 2rem auto;
+    padding: 1.5rem 1.5rem 0 0;
+    text-align: right;
+}
+
+.section-heading--nomadas .eyebrow {
+    margin-bottom: 0.8rem;
+    color: #e4c6b9;
+    font-family: var(--font-condensed);
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.section-heading--nomadas h2 {
+    max-width: 100%;
+    margin: 0;
+    color: #F2EEE4;
+    font-family: var(--font-editorial);
+    font-size: clamp(2.5rem, 5vw, 4.8rem);
+    font-weight: 400;
+    line-height: 0.98;
+}
+
+.section-heading--nomadas > p:last-child {
+    max-width: 390px;
+    margin: 1rem 0 0 auto;
+    color: #f0deda;
+    font-family: var(--font-editorial);
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    line-height: 1.45;
+}
+
+.nomadas-intro {
+    max-width: 330px;
+    margin: 1.2rem 0 2rem auto;
+    color: #f0deda;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    text-align: right;
+    opacity: 0.85;
+}
+
+.nomadas-carousel {
+    position: relative;
+}
+
+.nomadas-track {
+    display: grid;
+    grid-auto-columns: minmax(260px, 34%);
+    grid-auto-flow: column;
+    gap: 1.25rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0.5rem 0 1.5rem;
+    scrollbar-color: #e4c6b9 rgb(70 10 10 / 40%);
+}
+
+.nomadas-track > * {
+    scroll-snap-align: start;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 42%;
+    z-index: 5;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgb(242 238 228 / 70%);
+    border-radius: 50%;
+    background: var(--bestia-wine);
+    color: var(--bestia-cream);
+    cursor: pointer;
+}
+
+.carousel-arrow:hover {
+    background: var(--bestia-cream);
+    color: var(--bestia-wine);
+}
+
+.carousel-arrow--prev { left: -18px; }
+.carousel-arrow--next { right: -18px; }
+
+/* ---------------------------------------------------------
+   5. REFLEJO — COLLAGE
+   --------------------------------------------------------- */
+
+.reflejo-collage {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-flow: dense;
+    gap: clamp(1.2rem, 2.5vw, 2.5rem);
+    align-items: start;
+}
+
+.reflejo-card {
+    grid-column: span 4;
+}
+
+/* ---------------------------------------------------------
+   6. TARJETAS INTERACTIVAS — NÓMADAS Y REFLEJO
+   ---------------------------------------------------------
+   La composición usa una sola columna de contenido:
+   título arriba al abrir y detalles debajo. La distribución
+   cambia según el formato, evitando posiciones superpuestas.
+   --------------------------------------------------------- */
+
+.nomadas-card,
+.reflejo-card {
+    position: relative;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    isolation: isolate;
+}
+
+.nomadas-card .article-card__image,
+.reflejo-card .article-card__image {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--article-ratio, 4 / 3);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+    background: #113B28;
+    cursor: pointer;
+    isolation: isolate;
+}
+
+.nomadas-card .article-card__image img,
+.reflejo-card .article-card__image img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 500ms ease;
+}
+
+.nomadas-card .article-card__image::after,
+.reflejo-card .article-card__image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+        to top,
+        rgb(0 0 0 / 68%) 0%,
+        rgb(0 0 0 / 24%) 35%,
+        transparent 68%
+    );
+    transition: opacity 400ms ease;
+}
+
+/* Contenedor superpuesto que ordena título y detalles. */
+.nomadas-card .article-card__copy,
+.reflejo-card .article-card__copy {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0;
+    margin: 0;
+    padding: 1.1rem 1.2rem;
+    overflow: hidden;
+    color: #F2EEE4;
+    pointer-events: none;
+}
+
+.nomadas-card .article-card__copy h3,
+.reflejo-card .article-card__copy h3 {
+    position: relative;
+    flex: 0 0 auto;
+    margin: 0;
+    color: inherit;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.03;
+    text-wrap: balance;
+    text-shadow: 0 1px 8px rgb(0 0 0 / 45%);
+    transition: font-size 300ms ease, transform 400ms ease;
+}
+
+.nomadas-card .article-card__link,
+.reflejo-card .article-card__link {
+    position: relative;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: inherit;
+    text-decoration: none;
+    pointer-events: auto;
+}
+
+.nomadas-card .article-card__link:hover,
+.reflejo-card .article-card__link:hover {
+    color: #D7DCC9;
+}
+
+/* Subrayado animado del título. */
+.nomadas-card .article-card__link::after,
+.reflejo-card .article-card__link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -0.08em;
+    left: 0;
+    height: 1px;
+    background: var(--bestia-sage);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 350ms ease;
+}
+
+/* Panel de contenido: oculto sin interacción. */
+.nomadas-card .article-card__details,
+.reflejo-card .article-card__details {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+    min-height: 0;
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: #F2EEE4;
+    background: transparent;
+    opacity: 0;
+    transition: max-height 450ms ease, opacity 250ms ease, padding 350ms ease;
+    pointer-events: none;
+}
+
+.nomadas-card .article-card__details .article-teaser,
+.reflejo-card .article-card__details .article-teaser {
+    width: 100%;
+    margin: 0;
+    color: #F2EEE4;
+    font-size: clamp(0.88rem, 1.1vw, 1.02rem);
+    line-height: 1.4;
+}
+
+.nomadas-card .article-card__details .article-meta,
+.reflejo-card .article-card__details .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.7rem;
+    width: 100%;
+    margin: 0;
+    color: #D7DCC9;
+    font-size: 0.8rem;
+    line-height: 1.3;
+}
+
+.nomadas-card .article-card__tags,
+.reflejo-card .article-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    width: 100%;
+    margin: auto 0 0;
+    padding-top: 0.35rem;
+}
+
+.nomadas-card .article-card__tag,
+.reflejo-card .article-card__tag {
+    display: inline-block;
+    padding: 0.25rem 0.45rem;
+    border: 1px solid rgb(242 238 228 / 55%);
+    color: #F2EEE4;
+    font-size: 0.68rem;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* Estado abierto: título y detalles ocupan filas consecutivas. */
+@media (hover: hover) and (pointer: fine) {
+    .nomadas-card:hover .article-card__image img,
+    .reflejo-card:hover .article-card__image img {
+        transform: scale(1.035);
+    }
+
+    .nomadas-card:hover .article-card__copy,
+    .reflejo-card:hover .article-card__copy,
+    .nomadas-card:focus-within .article-card__copy,
+    .reflejo-card:focus-within .article-card__copy {
+        justify-content: flex-start;
+        background: rgb(17 23 19 / 91%);
+        overflow-y: auto;
+        pointer-events: auto;
+    }
+
+    .nomadas-card:hover .article-card__copy h3,
+    .reflejo-card:hover .article-card__copy h3,
+    .nomadas-card:focus-within .article-card__copy h3,
+    .reflejo-card:focus-within .article-card__copy h3 {
+        font-size: clamp(1.15rem, 1.65vw, 1.65rem);
+        line-height: 1.02;
+        text-shadow: none;
+    }
+
+    .nomadas-card:hover .article-card__details,
+    .reflejo-card:hover .article-card__details,
+    .nomadas-card:focus-within .article-card__details,
+    .reflejo-card:focus-within .article-card__details {
+        max-height: 100%;
+        padding-top: 0.7rem;
+        overflow: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nomadas-card:hover .article-card__link::after,
+    .reflejo-card:hover .article-card__link::after,
+    .nomadas-card:focus-within .article-card__link::after,
+    .reflejo-card:focus-within .article-card__link::after {
+        transform: scaleX(1);
+    }
+}
+
+/* Distribución ajustada por formato de portada.
+   El atributo data-proporcion lo añade renderizarTarjeta(). */
+.nomadas-card[data-proporcion="1 / 1"] .article-card__copy,
+.reflejo-card[data-proporcion="1 / 1"] .article-card__copy {
+    padding: 0.9rem 1rem;
+}
+
+.nomadas-card[data-proporcion="1 / 1"] .article-card__copy h3,
+.reflejo-card[data-proporcion="1 / 1"] .article-card__copy h3 {
+    font-size: clamp(1.3rem, 2vw, 2rem);
+}
+
+.nomadas-card[data-proporcion="3 / 4"] .article-card__copy,
+.reflejo-card[data-proporcion="3 / 4"] .article-card__copy {
+    padding: 1.1rem 1.2rem;
+}
+
+.nomadas-card[data-proporcion="3 / 4"] .article-card__copy h3,
+.reflejo-card[data-proporcion="3 / 4"] .article-card__copy h3 {
+    font-size: clamp(1.45rem, 2.2vw, 2.2rem);
+}
+
+.nomadas-card[data-proporcion="16 / 9"] .article-card__copy,
+.reflejo-card[data-proporcion="16 / 9"] .article-card__copy {
+    padding: 0.75rem 0.9rem;
+}
+
+.nomadas-card[data-proporcion="16 / 9"] .article-card__copy h3,
+.reflejo-card[data-proporcion="16 / 9"] .article-card__copy h3 {
+    font-size: clamp(1.1rem, 1.7vw, 1.65rem);
+}
+
+/* Ajuste del contenido al abrir portadas de poca altura. */
+@media (hover: hover) and (pointer: fine) {
+    .nomadas-card[data-proporcion="16 / 9"] .article-card__details,
+    .reflejo-card[data-proporcion="16 / 9"] .article-card__details {
+        gap: 0.4rem;
+    }
+
+    .nomadas-card[data-proporcion="16 / 9"] .article-card__details .article-teaser,
+    .reflejo-card[data-proporcion="16 / 9"] .article-card__details .article-teaser {
+        font-size: 0.88rem;
+        line-height: 1.3;
+    }
+
+    .nomadas-card[data-proporcion="1 / 1"] .article-card__details .article-teaser,
+    .reflejo-card[data-proporcion="1 / 1"] .article-card__details .article-teaser {
+        font-size: 0.92rem;
+    }
+}
+
+/* En pantallas táctiles no existe hover: se muestra la información
+   como una franja inferior con desplazamiento si hace falta. */
+@media (hover: none), (pointer: coarse) {
+    .nomadas-card .article-card__copy,
+    .reflejo-card .article-card__copy {
+        justify-content: flex-end;
+        overflow-y: auto;
+        background: linear-gradient(
+            to top,
+            rgb(17 23 19 / 96%) 0%,
+            rgb(17 23 19 / 82%) 58%,
+            transparent 100%
+        );
+        pointer-events: auto;
+    }
+
+    .nomadas-card .article-card__copy h3,
+    .reflejo-card .article-card__copy h3 {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+        text-shadow: none;
+    }
+
+    .nomadas-card .article-card__details,
+    .reflejo-card .article-card__details {
+        max-height: none;
+        padding-top: 0.55rem;
+        overflow: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* ---------------------------------------------------------
+   7. LECTOR DE ARTÍCULOS
+   --------------------------------------------------------- */
+
+.article-reader {
+    width: min(100% - 2rem, 1100px);
+    margin-inline: auto;
+    padding-block: 2rem 6rem;
+}
+
+.article-reader[hidden] {
+    display: none;
+}
+
+.article-reader__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgb(242 238 228 / 25%);
+}
+
+.article-reader__back,
+.article-reader__bottom button {
+    border: 0;
+    padding: 0.6rem 0;
+    background: transparent;
+    color: var(--bestia-cream);
+    cursor: pointer;
+    text-align: left;
+}
+
+.article-reader__back:hover,
+.article-reader__bottom button:hover {
+    color: var(--bestia-sage);
+}
+
+.article-reader__section {
+    color: var(--bestia-sage);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.article-reader__content {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.article-reader__header {
+    padding-block: clamp(3rem, 8vw, 6rem) 2rem;
+}
+
+.article-reader__header h1 {
+    margin: 1rem 0;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 400;
+    line-height: 0.98;
+}
+
+.article-reader__standfirst {
+    color: var(--bestia-muted);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    line-height: 1.45;
+}
+
+.article-reader__hero {
+    margin: 2rem 0 3rem;
+}
+
+.article-reader__hero img {
+    display: block;
+    width: 100%;
+    max-height: 780px;
+    object-fit: cover;
+}
+
+.article-reader__caption {
+    margin-top: 0.6rem;
+    color: var(--bestia-muted);
+    font-size: 0.9rem;
+}
+
+.article-reader__body {
+    font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+    line-height: 1.85;
+}
+
+.article-reader__body p {
+    margin: 0 0 1.5em;
+}
+
+.article-reader__body h2,
+.article-reader__body h3 {
+    margin: 2.5em 0 0.8em;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.article-reader__body figure {
+    margin: 3rem 0;
+}
+
+.article-reader__body figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.article-reader__body figcaption {
+    margin-top: 0.6rem;
+    color: var(--bestia-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.article-reader__body blockquote {
+    margin: 2.5rem 0;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    border-left: 3px solid var(--bestia-sage);
+    color: var(--bestia-cream);
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    font-style: italic;
+    line-height: 1.25;
+}
+
+.article-reader__bottom {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(242 238 228 / 25%);
+}
+
+/* Variante crema del lector en la página Bestia. */
+.pagina-bestia .article-reader {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 5vw, 5rem) 6rem;
+    background: var(--bestia-cream);
+    color: var(--bestia-ink);
+}
+
+.pagina-bestia .article-reader__toolbar {
+    border-bottom-color: rgb(23 23 21 / 20%);
+    color: var(--bestia-ink);
+}
+
+.pagina-bestia .article-reader__back,
+.pagina-bestia .article-reader__bottom button {
+    color: var(--bestia-ink);
+}
+
+.pagina-bestia .article-reader__back:hover,
+.pagina-bestia .article-reader__bottom button:hover {
+    color: var(--bestia-wine);
+}
+
+.pagina-bestia .article-reader__section,
+.pagina-bestia .article-reader__body blockquote {
+    color: var(--bestia-wine);
+}
+
+.pagina-bestia .article-reader__header h1,
+.pagina-bestia .article-reader__body,
+.pagina-bestia .article-reader__body p,
+.pagina-bestia .article-reader__body h2,
+.pagina-bestia .article-reader__body h3 {
+    color: var(--bestia-ink);
+}
+
+.pagina-bestia .article-reader__standfirst,
+.pagina-bestia .article-reader__caption {
+    color: #56564F;
+}
+
+.pagina-bestia .article-reader__body blockquote {
+    border-left-color: var(--bestia-wine);
+}
+
+.pagina-bestia .article-reader__bottom {
+    border-top-color: rgb(23 23 21 / 20%);
+    color: var(--bestia-ink);
+}
+
+/* ---------------------------------------------------------
+   8. RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+    .archivo-diario__contenido,
+    .principal-feature {
+        grid-template-columns: 1fr;
+    }
+
+    .nomadas-track {
+        grid-auto-columns: minmax(78%, 1fr);
+    }
+
+    .carousel-arrow--prev { left: 0; }
+    .carousel-arrow--next { right: 0; }
+
+    .reflejo-collage {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem 1rem;
+    }
+
+    .reflejo-card,
+    .reflejo-card:nth-child(n) {
+        grid-column: auto;
+        margin-top: 0;
+    }
+
+    .reflejo-card:nth-child(3n + 1) {
+        grid-column: 1 / -1;
+    }
+
+    .article-reader__toolbar {
+        align-items: flex-start;
+    }
+
+    .section-heading--nomadas {
+        max-width: 100%;
+        padding: 1rem 0.5rem 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-heading--nomadas h2 {
+        font-size: clamp(2.4rem, 9vw, 3.5rem);
+    }
+
+    .section-heading--nomadas > p:last-child,
+    .nomadas-intro {
+        max-width: 290px;
+    }
+}
+
+@media (max-width: 420px) {
+    .reflejo-collage {
+        grid-template-columns: 1fr;
+    }
+
+    .reflejo-card,
+    .reflejo-card:nth-child(n) {
+        grid-column: 1;
+    }
+}
+
+/* ---------------------------------------------------------
+   9. ACCESIBILIDAD Y MOVIMIENTO REDUCIDO
+   --------------------------------------------------------- */
+
+.nomadas-card .article-card__image:focus-visible,
+.reflejo-card .article-card__image:focus-visible,
+.nomadas-card .article-card__link:focus-visible,
+.reflejo-card .article-card__link:focus-visible {
+    outline: 3px solid #D7DCC9;
+    outline-offset: -4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section-card::before,
+    .section-card::after,
+    .daily-card__image img,
+    .principal-feature__image img,
+    .nomadas-card .article-card__image img,
+    .reflejo-card .article-card__image img,
+    .nomadas-card .article-card__details,
+    .reflejo-card .article-card__details,
+    .nomadas-card .article-card__link::after,
+    .reflejo-card .article-card__link::after {
+        transition: none;
+    }
+
+    .nomadas-track {
+        scroll-behavior: auto;
+    }
+}

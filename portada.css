@@ -1,0 +1,1582 @@
+/* =====================================================
+   QUIRÓN — PORTADA
+   Hero, selección editorial, secciones, manifiesto y cierre
+   ===================================================== */
+
+/* -----------------------------------------------------
+   1. HERO / PORTADA PRINCIPAL
+   ----------------------------------------------------- */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0;
+    overflow: hidden;
+    background: var(--color-forest);
+    color: var(--color-cream);
+}
+
+.hero-art {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    background: url("../assets/images/HERO1.png") center / cover no-repeat;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        rgb(17 59 40 / 68%) 0%,
+        rgb(17 59 40 / 35%) 48%,
+        rgb(17 59 40 / 18%) 100%
+    );
+}
+
+/* En el HTML actual el sombreado se gestiona con ::after. */
+.hero-shade {
+    display: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: clamp(3rem, 7vw, 8rem);
+    width: min(calc(100% - var(--page-gutter) * 2), var(--content-max));
+    min-height: 100%;
+    margin-inline: auto;
+}
+
+.hero-left,
+.hero-right {
+    min-width: 0;
+}
+
+.hero-left {
+    align-self: start;
+    max-width: 650px;
+    padding-top: clamp(7rem, 14vh, 10rem);
+}
+
+.hero-left .eyebrow {
+    margin: 0 0 1.5rem;
+    font-family: var(--font-editorial);
+    font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+    line-height: 1.2;
+}
+
+.hero-manifesto {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.55rem, 1.1vh, 0.9rem);
+    max-width: 600px;
+    margin: 0;
+    font-family: var(--font-editorial);
+    font-size: clamp(1.65rem, 2.6vw, 2.6rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+}
+
+.hero-manifesto p,
+.hero-manifesto h1,
+.hero-manifesto h2 {
+    margin: 0;
+    font: inherit;
+}
+
+.hero-right {
+    align-self: start;
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+
+    margin-top: clamp(25rem, 35vh, 35rem);
+
+    gap: 0;
+}
+
+.hero-logo {
+    display: block;
+    width: min(130%, 620px);
+    max-width: none;
+    max-height: none;
+    height: auto;
+    margin: 0 auto 1.25rem;
+    object-fit: contain;
+    object-position: center;
+}
+
+.hero-copy {
+    width: min(100%, 430px);
+    max-width: 430px;
+    margin: 0;
+    color: var(--color-cream);
+    font-family: var(--font-editorial);
+    font-size: clamp(1.15rem, 1.45vw, 1.4rem);
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: left;
+}
+
+.hero-copy p {
+    margin: 0;
+}
+
+.hero-copy p + p {
+    margin-top: 0.4rem;
+}
+
+.hero-link {
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1.1rem;
+    padding: 0.5rem 1rem;
+    color: var(--color-cream);
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.hero-divider {
+    align-self: center;
+    width: 76px;
+    height: 1px;
+    margin-top: 0.35rem;
+    background: currentColor;
+}
+
+.scroll-cue {
+    position: absolute;
+    z-index: 2;
+    bottom: 2rem;
+    left: var(--page-gutter);
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    color: var(--color-cream);
+}
+
+.scroll-cue span {
+    width: 12px;
+    height: 12px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-3px) rotate(45deg);
+}
+
+.hero-index {
+    position: absolute;
+    z-index: 2;
+    right: var(--page-gutter);
+    bottom: 2rem;
+    color: var(--color-cream);
+    font-family: var(--font-condensed);
+    font-size: 0.85rem;
+}
+
+/* -----------------------------------------------------
+   2. SELECCIÓN EDITORIAL / ARTÍCULOS DESTACADOS
+   ----------------------------------------------------- */
+
+.editorial-selection {
+    background: var(--color-cream);
+    color: var(--color-charcoal);
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: clamp(2rem, 3.5vw, 3.5rem);
+}
+
+.section-heading .eyebrow {
+    margin: 0 0 0.8rem;
+}
+
+.section-heading h2 {
+    margin: 0;
+    color: var(--color-charcoal);
+    font-family: var(--font-editorial);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+}
+
+.section-intro {
+    max-width: 340px;
+    margin: 0;
+    color: var(--color-ink-soft);
+    font-family: var(--font-editorial);
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    line-height: 1.5;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.story-card {
+    min-width: 0;
+}
+
+.story-card--large {
+    grid-row: span 2;
+}
+
+.story-image {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background-color: var(--color-forest);
+    background-position: center;
+    background-size: cover;
+}
+
+.story-card--large .story-image {
+    aspect-ratio: 3 / 4;
+}
+
+.story-image--one {
+    background-image:
+        linear-gradient(rgb(23 23 21 / 7%), rgb(23 23 21 / 12%)),
+        url("../assets/images/CENTAURO VERDE transp.png");
+}
+
+.story-image--two {
+    background-image: url("../assets/images/BESTIA VERDE 1 transp.png");
+}
+
+.story-image--three {
+    background-image: url("../assets/images/CONVERSACION CARBON transp.png");
+}
+
+.story-number,
+.story-open {
+    position: absolute;
+    color: var(--color-cream);
+}
+
+.story-number {
+    top: 1rem;
+    left: 1rem;
+    font-family: var(--font-condensed);
+}
+
+.story-open {
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.story-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+    color: var(--color-ink-soft);
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+}
+
+.story-card h3 {
+    margin: 0.75rem 0;
+    font-family: var(--font-editorial);
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+.story-card h3 a:hover {
+    color: var(--color-wine);
+}
+
+.story-card > p {
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+}
+
+/* -----------------------------------------------------
+   3. CUATRO SECCIONES EDITORIALES
+   ----------------------------------------------------- */
+
+.sections-section {
+    padding-block: clamp(4rem, 7vw, 7rem);
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+}
+
+.section-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.section-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1.5rem;
+    min-width: 0;
+    min-height: clamp(330px, 29vw, 430px);
+    overflow: hidden;
+    padding: clamp(1.2rem, 1.8vw, 1.7rem);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--color-cream);
+    text-decoration: none;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+/* Las tarjetas son bloques de color; el logo es una imagen independiente. */
+.section-card--centauro,
+.section-card--bestia {
+    background-color: #113B28;
+}
+
+.section-card--conversacion,
+.section-card--speciales {
+    background-color: #171715;
+}
+
+/* =====================================================
+   LOGOS DE LAS TARJETAS EDITORIALES
+   ===================================================== */
+
+.section-card-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    margin: auto;
+    object-fit: contain;
+    object-position: center;
+    transition: transform var(--transition-smooth);
+}
+
+/* Centauro: logo ancho, con presencia protagonista */
+.section-card-logo--centauro {
+    width: 112%;
+    max-width: none;
+    transform: scale(1.05);
+}
+
+/* Bestia: conservar proporción y ampliar moderadamente */
+.section-card-logo--bestia {
+    width: 108%;
+    max-width: none;
+}
+
+/* Convers-ac-ión: logo más compacto por su composición */
+.section-card-logo--conversacion {
+    width: 100%;
+    max-width: none;
+}
+
+/* Speciales: ampliar sin perder la proporción */
+.section-card-logo--speciales {
+    width: 105%;
+    max-width: none;
+}
+
+/* Efecto sutil al pasar el cursor */
+.section-card:hover .section-card-logo {
+    transform: scale(1.04);
+}
+
+.section-card:hover .section-card-logo--centauro {
+    transform: scale(1.09);
+}
+
+.section-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgb(23 23 21 / 12%);
+}
+
+.section-card:focus-visible {
+    outline: 3px solid var(--color-wine);
+    outline-offset: 4px;
+}
+
+.section-card-top {
+    display: block;
+    color: var(--color-cream);
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0.025em;
+}
+
+
+
+
+.section-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgb(251 250 246 / 24%);
+    color: var(--color-cream);
+    font-family: var(--font-editorial);
+    font-size: clamp(1rem, 1.15vw, 1.15rem);
+    line-height: 1.3;
+}
+
+.section-card-bottom b {
+    flex: 0 0 auto;
+    font-family: var(--font-ui);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform var(--transition-fast);
+}
+
+.section-card:hover .section-card-bottom b {
+    transform: translate(3px, -3px);
+}
+
+
+/* =========================================
+   Bestia — HERO Y NAVEGACIÓN INTERNA
+   ========================================= */
+
+.pagina-bestia {
+    --bestia-green: #113B28;
+    --bestia-sage: #8BAD93;
+    --bestia-cream: #F2EEE4;
+    --bestia-wine: #781A16;
+    --bestia-ink: #171715;
+    --bestia-muted: #c4c8bd;
+
+    --bestia-hero-image: url("../assets/images/hero-bestia-1.png");
+
+    background: var(--bestia-green);
+    color: var(--bestia-cream);
+    font-family: "EB Garamond", Georgia, serif;
+}
+
+.pagina-bestia *,
+.pagina-bestia *::before,
+.pagina-bestia *::after {
+    box-sizing: border-box;
+}
+
+.pagina-bestia img {
+    display: block;
+    max-width: 100%;
+}
+
+.pagina-bestia a {
+    color: inherit;
+}
+
+.pagina-bestia button {
+    font: inherit;
+}
+
+.pagina-bestia section[id] {
+    scroll-margin-top: 5rem;
+}
+
+/* =========================================
+   CABECERA BESTIA — COMPORTAMIENTO QUIRÓN
+   ========================================= */
+
+.pagina-bestia .site-header {
+    position: fixed;
+    z-index: 1000;
+    inset: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 2rem;
+    padding: 1rem 5%;
+
+    color: var(--bestia-cream);
+
+    background: linear-gradient(
+        to bottom,
+        rgb(23 23 21 / 65%),
+        transparent
+    );
+
+    transition:
+        transform var(--transition-smooth),
+        background var(--transition-smooth),
+        box-shadow var(--transition-smooth);
+}
+
+/* Estado al desplazarse hacia abajo */
+.pagina-bestia .site-header.is-scrolled {
+    background: #113B28;
+    box-shadow: 0 8px 30px #0002;
+    backdrop-filter: blur(12px);
+}
+
+/* Estado al desplazarse hacia arriba */
+.pagina-bestia .site-header.is-hidden {
+    transform: translateY(-110%);
+}
+
+/* Logo */
+.pagina-bestia .site-header__brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.pagina-bestia .site-header__brand img {
+    display: block;
+    width: auto;
+    max-width: 125px;
+    max-height: 48px;
+    object-fit: contain;
+}
+
+/* Navegación */
+.pagina-bestia .main-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: clamp(0.8rem, 2vw, 1.8rem);
+
+    color: var(--bestia-cream);
+}
+
+.pagina-bestia .main-navigation .nav-link {
+    color: var(--bestia-cream);
+    text-decoration: none;
+    transition: color 180ms ease;
+}
+
+.pagina-bestia .main-navigation .nav-link:hover {
+    color: var(--bestia-sage);
+}
+
+.pagina-bestia .main-navigation .nav-link.is-current {
+    color: var(--bestia-cream);
+}
+/* =========================================
+   HERO BESTIA
+   ========================================= */
+
+.bestia-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: min(850px, 92svh);
+    overflow: hidden;
+    background: var(--bestia-green);
+}
+
+.bestia-hero__image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image:
+        linear-gradient(
+            180deg,
+            rgb(17 59 40 / 12%) 0%,
+            rgb(17 59 40 / 25%) 45%,
+            rgb(17 59 40 / 92%) 100%
+        ),
+        var(--bestia-hero-image);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bestia-hero__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: min(100% - 2rem, 1100px);
+    margin-inline: auto;
+    padding: clamp(4rem, 10vw, 8rem) 0 3rem;
+    text-align: center;
+}
+
+.bestia-hero__logo {
+    width: min(95%, 850px);
+    max-height: 420px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgb(0 0 0 / 12%));
+}
+
+.bestia-hero__tagline {
+    max-width: 780px;
+    margin: 1.5rem 0 0;
+    font-size: clamp(1.6rem, 3.4vw, 3rem);
+    font-style: italic;
+    line-height: 1.1;
+    text-wrap: balance;
+}
+
+.bestia-hero__description {
+    max-width: 540px;
+    margin: 1rem auto 0;
+    color: var(--bestia-cream);
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    line-height: 1.55;
+}
+
+/* =========================================
+   NAVEGACIÓN INTERNA BESTIA
+   ========================================= */
+
+.bestia-subnav {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: clamp(0.4rem, 2vw, 1.4rem);
+    width: min(100% - 2rem, 1000px);
+    margin: 0 auto;
+    padding: 1.2rem 0 2rem;
+}
+
+.bestia-subnav__link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-width: 0;
+    padding: 0.9rem clamp(0.8rem, 2.5vw, 2rem);
+    border: 1px solid rgb(242 238 228 / 45%);
+    border-radius: 2px;
+    color: var(--bestia-cream);
+    text-decoration: none;
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    transition:
+        background-color 220ms ease,
+        color 220ms ease,
+        border-color 220ms ease;
+}
+
+.bestia-subnav__link span {
+    color: var(--bestia-sage);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+.bestia-subnav__link:hover,
+.bestia-subnav__link:focus-visible {
+    background: var(--bestia-cream);
+    border-color: var(--bestia-cream);
+    color: var(--bestia-green);
+}
+
+.bestia-subnav__link:hover span,
+.bestia-subnav__link:focus-visible span {
+    color: var(--bestia-green);
+}
+
+.bestia-subnav__link--nomadas {
+    border-color: var(--bestia-wine);
+    background: var(--bestia-wine);
+}
+
+.bestia-subnav__link--nomadas span {
+    color: var(--bestia-cream);
+}
+
+/* =========================================
+   ENCABEZADOS EDITORIALES BESTIA
+   ========================================= */
+
+.bestia-section,
+.archivo-diario {
+    width: min(100% - 3rem, 1280px);
+    margin-inline: auto;
+    padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.section-heading {
+    max-width: 780px;
+    margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+    margin: 0 0 0.75rem;
+    color: var(--bestia-sage);
+    font-family: "Typewcond", sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.section-heading h2,
+.archivo-diario h2,
+.bestia-blog h2 {
+    margin: 0;
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 0.98;
+}
+
+.section-heading > p:last-child,
+.archivo-diario__heading > p:last-child {
+    max-width: 650px;
+    color: var(--bestia-muted);
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* =========================================
+   BLOG Y FOOTER BESTIA
+   ========================================= */
+
+.bestia-blog {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: clamp(3rem, 7vw, 6rem) max(1.5rem, calc((100% - 1280px) / 2));
+    border-top: 1px solid rgb(242 238 228 / 22%);
+    border-bottom: 1px solid rgb(242 238 228 / 22%);
+}
+
+.bestia-blog > div {
+    max-width: 680px;
+}
+
+.bestia-blog h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.bestia-blog p:not(.eyebrow) {
+    color: var(--bestia-muted);
+    line-height: 1.5;
+}
+
+.text-link {
+    display: inline-flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--bestia-sage);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.site-footer {
+    padding: 3rem 5%;
+    background: var(--bestia-ink);
+    color: var(--bestia-cream);
+    text-align: center;
+}
+
+.site-footer__brand {
+    font-size: 2rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+}
+
+.site-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+}
+
+.site-footer nav a {
+    text-decoration: none;
+}
+
+.site-footer nav a:hover {
+    color: var(--bestia-sage);
+}
+
+.site-footer__copyright {
+    color: var(--bestia-muted);
+    font-size: 0.85rem;
+}
+
+/* =========================================
+   ACCESIBILIDAD Y RESPONSIVE BESTIA
+   ========================================= */
+
+.pagina-bestia a:focus-visible,
+.pagina-bestia button:focus-visible {
+    outline: 2px solid var(--bestia-sage);
+    outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+    .pagina-bestia .site-header {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .pagina-bestia .site-nav {
+        justify-content: center;
+        gap: 0.8rem 1rem;
+    }
+
+    .bestia-hero {
+        min-height: 80svh;
+    }
+
+    .bestia-subnav {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: min(100% - 2rem, 440px);
+        padding-bottom: 1.5rem;
+    }
+
+    .bestia-subnav__link {
+        justify-content: space-between;
+    }
+
+    .bestia-blog {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bestia-subnav__link,
+    .pagina-bestia .site-nav a {
+        transition: none;
+    }
+}
+
+
+/* -----------------------------------------------------
+   4. MANIFIESTO
+   Incluye estilos para la versión editorial actual.
+   ----------------------------------------------------- */
+
+.manifesto-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: clamp(5rem, 10vw, 9rem) var(--page-gutter);
+    background: var(--color-cream);
+    color: var(--color-forest);
+}
+
+.manifesto-inner {
+    width: 100%;
+    max-width: 1180px;
+    margin-inline: auto;
+}
+
+.manifesto-header {
+    max-width: 850px;
+    margin: 0 auto clamp(4rem, 7vw, 6.5rem);
+    text-align: center;
+}
+
+.manifesto-kicker {
+    display: block;
+    margin-bottom: 1.6rem;
+    color: var(--color-wine);
+    font-family: var(--font-condensed);
+    font-size: 1 rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.manifesto-header h2,
+.manifesto-text h2 {
+    margin: 0;
+    font-family: var(--font-editorial);
+    font-size: clamp(2.8rem, 6.5vw, 6rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+}
+
+.manifesto-header h2 em,
+.manifesto-text h2 span {
+    color: var(--color-wine);
+    font-weight: 400;
+}
+
+.manifesto-header h2 em {
+    display: block;
+    margin-top: 0.15em;
+}
+
+.manifesto-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: min(100%, 280px);
+    margin: 2.2rem auto;
+}
+
+.manifesto-divider > span:not(.manifesto-divider-symbol) {
+    flex: 1;
+    height: 1px;
+    background: var(--color-sage);
+}
+
+.manifesto-divider-symbol {
+    color: var(--color-wine);
+    font-size: 1.1rem;
+}
+
+.manifesto-verses {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: 2.5rem;
+}
+
+.manifesto-verses p {
+    margin: 0;
+    font-family: var(--font-editorial);
+    font-size: clamp(1.45rem, 2.5vw, 2.15rem);
+    font-style: italic;
+    line-height: 1.25;
+}
+
+.manifesto-body {
+    max-width: 1000px;
+    margin-inline: auto;
+    font-family: var(--font-editorial);
+    font-size: clamp(1.12rem, 1.35vw, 1.3rem);
+    line-height: 1.8;
+}
+
+.manifesto-body p {
+    margin-top: 0;
+    margin-bottom: 1.4rem;
+}
+
+.manifesto-lead {
+    max-width: 850px;
+    margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(1.45rem, 2.2vw, 2rem);
+    line-height: 1.55;
+    text-align: center;
+}
+
+.manifesto-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 5vw, 5rem);
+}
+
+.manifesto-column p {
+    margin-bottom: 1.5rem;
+}
+
+.manifesto-column p:last-child {
+    margin-bottom: 0;
+}
+
+.manifesto-symbolism {
+    max-width: 800px;
+    margin: clamp(4rem, 8vw, 7rem) auto;
+    padding: clamp(1.75rem, 4vw, 3.5rem) 0;
+    border-top: 1px solid var(--color-sage);
+    border-bottom: 1px solid var(--color-sage);
+    text-align: center;
+}
+
+.manifesto-symbolism-label {
+    display: block;
+    margin-bottom: 1.5rem;
+    color: var(--color-wine);
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.manifesto-symbolism-phrase {
+    margin: 0 0 0.6rem;
+    color: var(--color-wine);
+    font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+    font-style: italic;
+    line-height: 1.35;
+}
+
+.manifesto-symbolism-explanation {
+    max-width: 720px;
+    margin: 2rem auto 0;
+    text-align: left;
+}
+
+.manifesto-ending {
+    max-width: 850px;
+    margin: clamp(4rem, 8vw, 7rem) auto;
+}
+
+.manifesto-ending-line {
+    margin: 0 0 0.7rem;
+    font-size: clamp(1.5rem, 2.8vw, 2.35rem);
+    font-style: italic;
+    line-height: 1.3;
+}
+
+.manifesto-ending-line:first-child {
+    color: var(--color-wine);
+}
+
+.manifesto-ending-explanation {
+    margin-top: 2rem;
+}
+
+.manifesto-footer {
+    max-width: 850px;
+    margin: clamp(5rem, 9vw, 8rem) auto 0;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-sage);
+    text-align: center;
+}
+
+.manifesto-final-statement {
+    margin: 0 auto 2rem;
+    font-family: var(--font-editorial);
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.manifesto-signature,
+.manifesto-signature em {
+    color: var(--color-wine);
+    font-family: var(--font-editorial);
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.manifesto-signature {
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+/* Estilos de respaldo si todavía existe el manifiesto antiguo. */
+.manifesto-text blockquote {
+    margin: 0 0 1.5rem;
+    font-family: var(--font-editorial);
+    font-size: 1.6rem;
+    font-style: italic;
+}
+
+.manifesto-text > p {
+    max-width: 680px;
+    line-height: 1.8;
+}
+
+.manifesto-signature-old {
+    color: var(--color-wine);
+    font-style: italic;
+}
+
+.manifesto-mark {
+    font-family: var(--font-editorial);
+    font-size: clamp(4rem, 8vw, 8rem);
+}
+
+.manifesto-mark span {
+    color: var(--color-wine);
+    font-size: 2rem;
+}
+
+/* -----------------------------------------------------
+   5. SOBRE EL AUTOR
+   ----------------------------------------------------- */
+
+.about-section {
+    background: var(--color-paper);
+    color: var(--color-charcoal);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.7fr);
+    align-items: center;
+    gap: clamp(2rem, 4vw, 4rem);
+}
+
+.about-image {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+    background-image:
+        linear-gradient(to top, rgb(17 59 40 / 72%), transparent 55%),
+        url("../assets/images/sobre-mi.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.about-image span {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    color: var(--color-cream);
+    font-family: var(--font-condensed);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.about-copy h2,
+.author-preview-title {
+    margin: 0 0 1rem;
+    font-family: var(--font-editorial);
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 400;
+    line-height: 1.05;
+}
+
+.about-copy p,
+.author-preview-text {
+    line-height: 1.75;
+}
+
+.about-lead {
+    font-family: var(--font-editorial);
+    font-size: 1.35rem;
+}
+
+.about-motto {
+    padding-left: 2rem;
+    border-left: 1px solid rgb(23 23 21 / 19%);
+    text-align: center;
+}
+
+.about-motto > div {
+    font-family: var(--font-editorial);
+    font-size: 4rem;
+}
+
+.about-motto p {
+    font-family: var(--font-editorial);
+    font-style: italic;
+}
+
+.author-preview {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding-block: clamp(3rem, 7vw, 7rem);
+}
+
+.author-preview-image {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+}
+
+.author-preview-content {
+    max-width: 580px;
+}
+
+.author-preview-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.author-preview-text {
+    margin: 0 0 1.5rem;
+}
+
+/* -----------------------------------------------------
+   6. CIERRE Y PIE DE PÁGINA
+   ----------------------------------------------------- */
+
+.closing-callout {
+    padding-block: clamp(4rem, 9vw, 9rem);
+    background: var(--color-forest);
+    color: var(--color-cream);
+}
+
+.closing-inner h2 {
+    margin: 1rem 0 2rem;
+    font-family: var(--font-editorial);
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 400;
+    line-height: 0.98;
+}
+
+.site-footer {
+    padding-block: 3rem 1.5rem;
+    background: var(--color-charcoal);
+    color: var(--color-cream);
+}
+
+.footer-top,
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.footer-top {
+    padding-bottom: 2rem;
+}
+
+.footer-brand {
+    font-family: var(--font-editorial);
+    font-size: 2.5rem;
+}
+
+.footer-brand span {
+    color: var(--color-sage);
+}
+
+.footer-top nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.footer-top nav,
+.footer-bottom {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+}
+
+.footer-bottom {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(251 250 246 / 17%);
+}
+
+/* -----------------------------------------------------
+   7. RESPONSIVE
+   ----------------------------------------------------- */
+
+@media (max-width: 1050px) {
+    .section-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .section-card {
+        min-height: 350px;
+    }
+
+    .section-card-logo {
+        height: 170px;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-content {
+        gap: 2rem;
+    }
+
+    .story-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .story-card--large {
+        grid-row: auto;
+    }
+
+    .manifesto-columns {
+        gap: 2rem;
+    }
+
+    .manifesto-mark {
+        display: none;
+    }
+
+    .about-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about-motto {
+        grid-column: 1 / -1;
+    }
+
+    .editorial-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .author-preview {
+        grid-template-columns: 1fr;
+    }
+
+    .author-preview-image {
+        max-height: 460px;
+    }
+}
+
+@media (max-width: 760px) {
+    .hero {
+        min-height: 100svh;
+    }
+
+    .hero-content {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+        gap: 2.5rem;
+        width: calc(100% - 2.5rem);
+        padding-block: 7.5rem 5rem;
+    }
+
+    .hero-left {
+        max-width: 100%;
+        padding-top: 0;
+    }
+
+    .hero-manifesto {
+        gap: 0.55rem;
+        font-size: clamp(1.65rem, 7vw, 2.35rem);
+        line-height: 1.1;
+    }
+
+    .hero-right {
+        justify-self: start;
+        align-items: flex-start;
+        max-width: 100%;
+        margin-top: 0;
+    }
+
+    .hero-logo {
+        width: min(85%, 360px);
+        max-width: 100%;
+        max-height: 180px;
+        margin: 0 0 1.5rem;
+        object-position: left center;
+    }
+
+    .hero-copy {
+        width: 100%;
+        max-width: 440px;
+        font-size: 1.15rem;
+        line-height: 1.4;
+    }
+
+    .hero-copy p + p {
+        margin-top: 0.9rem;
+    }
+
+    .hero-link {
+        align-self: flex-start;
+        margin-top: 1.5rem;
+    }
+
+    .hero-divider {
+        align-self: flex-start;
+    }
+
+    .scroll-cue {
+        bottom: 1.25rem;
+        left: 1.25rem;
+    }
+
+    .hero-index {
+        right: 1.25rem;
+        bottom: 1.25rem;
+    }
+
+    .editorial-grid {
+        gap: 0.75rem;
+    }
+
+    .editorial-card-title {
+        padding: 0.75rem;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .sections-section {
+        padding-block: 3.5rem;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(2.4rem, 10vw, 3.5rem);
+    }
+
+    .section-intro {
+        max-width: 32rem;
+    }
+
+    .section-cards {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+    }
+
+    .section-card {
+        min-height: 310px;
+        padding: 1.25rem;
+    }
+
+    .section-card-logo {
+        height: 145px;
+        max-height: 160px;
+    }
+
+    .manifesto-section {
+        padding: 5rem 1.35rem;
+    }
+
+    .manifesto-header {
+        margin-bottom: 3.5rem;
+    }
+
+    .manifesto-header h2,
+    .manifesto-text h2 {
+        line-height: 1.05;
+    }
+
+    .manifesto-verses {
+        margin-top: 2rem;
+    }
+
+    .manifesto-columns {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .manifesto-lead {
+        text-align: left;
+    }
+
+    .manifesto-symbolism-explanation {
+        text-align: left;
+    }
+
+    .manifesto-ending {
+        margin-block: 4rem;
+    }
+
+    .manifesto-footer {
+        margin-top: 5rem;
+    }
+
+    .story-grid,
+    .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .story-card--large .story-image,
+    .story-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    .about-image {
+        min-height: 320px;
+    }
+
+    .about-motto {
+        grid-column: auto;
+        padding: 1.5rem 0 0;
+        border-top: 1px solid rgb(23 23 21 / 19%);
+        border-left: 0;
+    }
+
+    .footer-top,
+    .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section-card,
+    .section-card-logo,
+    .section-card-bottom b,
+    .editorial-card img {
+        transition: none;
+    }
+
+    .section-card:hover,
+    .editorial-card:hover img,
+    .section-card:hover .section-card-logo,
+    .section-card:hover .section-card-bottom b {
+        transform: none;
+    }
+}
+
+@media (max-width: 700px) {
+  .section-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.section-card-visual {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    overflow: visible;
+}
+
+/* QUIRÓN — MÁRGENES EDITORIALES AJUSTADOS */
+
+/* Mitad del margen, sin modificar el header ni el hero */
+.editorial-selection.section-pad,
+.sections-section.section-pad {
+    padding-left: calc(var(--page-gutter) * 0.5);
+    padding-right: calc(var(--page-gutter) * 0.5);
+}
+
+/* Aprovechar el ancho disponible dentro de esos márgenes */
+.editorial-selection.section-pad > .page-shell,
+.sections-section.section-pad > .page-shell {
+    width: 100%;
+    max-width: var(--content-max);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
